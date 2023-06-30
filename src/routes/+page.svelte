@@ -1,4 +1,7 @@
 <script lang="ts">
+	import ButtonInput from '../components/ButtonInput.svelte';
+	import type { HandleCalculationOptions } from '../components/types';
+
 	let price: number | undefined = undefined;
 	let discount: number | undefined = undefined;
 	let tax: number | undefined = undefined;
@@ -7,7 +10,7 @@
 	const allowedDiscounts = [10, 15, 20, 25, 30];
 	const allowedTaxes = [5, 7, 7.5, 10];
 
-	function calculateDiscount(opts?: { inputDiscount?: number; inputTax?: number }) {
+	function calculateDiscount(opts?: HandleCalculationOptions) {
 		const { inputDiscount, inputTax } = opts ?? {};
 
 		if (inputDiscount !== undefined) {
@@ -32,11 +35,11 @@
 	}
 </script>
 
-<div class="flex flex-col justify-center items-center h-screen container md:w-96 m-auto p-4">
-	<div class="bg-white shadow-md h-40 w-full rounded grid p-2 overflow-hidden relative">
-		<span class="text-amber-700 absolute right-2 top-2">Final Price</span>
+<div class="container m-auto flex h-screen flex-col items-center p-4 md:w-96">
+	<div class="relative grid h-40 w-full overflow-hidden rounded bg-white p-2 shadow-md">
+		<span class="absolute right-2 top-2 text-amber-700">Final Price</span>
 		<span
-			class="w-full text-gray-500 font-bold text-6xl self-end justify-self-end overflow-auto flex text-right gap-2 items-center"
+			class="flex w-full items-center gap-2 self-end justify-self-end overflow-x-auto overflow-y-hidden text-right text-6xl font-bold text-gray-500"
 		>
 			<span class="text-3xl font-normal">$</span>
 			<span class="flex-1">{finalPrice}</span>
@@ -51,66 +54,24 @@
 			id="price"
 			bind:value={price}
 			on:input={() => calculateDiscount()}
-			class="w-full px-2 py-4 rounded appearance-none shadow"
+			class="w-full appearance-none rounded px-2 py-4 shadow"
 			min="0"
 		/>
 	</div>
 
-	<div class="mt-4 shadow w-full">
-		<div class="bg-white w-full text-amber-700 rounded-t border pl-2">Discount %:</div>
-		<div class="inline-flex">
-			{#each allowedDiscounts as allowedDiscount, i}
-				<button
-					class="bg-white shadow font-bold px-2 py-4 {i === 0 && 'rounded-bl'} {discount ===
-						allowedDiscount && 'bg-gray-300'}"
-					on:click={() => calculateDiscount({ inputDiscount: allowedDiscount })}
-					>{allowedDiscount}%</button
-				>
-			{/each}
-			<div>
-				<label for="discount" class="sr-only">Discount %</label>
-				<input
-					type="number"
-					id="discount"
-					bind:value={discount}
-					on:input={() => calculateDiscount()}
-					placeholder="%"
-					class="w-full px-2 py-4 rounded-br appearance-none shadow"
-					min="0"
-				/>
-			</div>
-		</div>
-	</div>
+	<ButtonInput
+		items={allowedDiscounts}
+		type="inputDiscount"
+		originalValue={discount}
+		handleCalculation={calculateDiscount}
+		title="Discount %"
+	/>
 
-	<div class="mt-4 shadow w-full">
-		<div class="bg-white w-full text-amber-700 rounded-t border pl-2">Tax %:</div>
-		<div class="inline-flex w-full">
-			{#each allowedTaxes as allowedTax, i}
-				<button
-					class="bg-white shadow font-bold px-2 py-4 {i === 0 && 'rounded-bl'} {tax ===
-						allowedTax && 'bg-gray-300'}"
-					on:click={() => calculateDiscount({ inputTax: allowedTax })}>{allowedTax}%</button
-				>
-			{/each}
-			<div>
-				<label for="tax" class="sr-only">Tax %</label>
-				<input
-					type="number"
-					id="tax"
-					bind:value={tax}
-					on:input={() => calculateDiscount()}
-					placeholder="%"
-					class="w-full px-2 py-4 rounded-br appearance-none shadow"
-					min="0"
-				/>
-			</div>
-		</div>
-	</div>
+	<ButtonInput
+		items={allowedTaxes}
+		type="inputTax"
+		originalValue={tax}
+		handleCalculation={calculateDiscount}
+		title="Tax %"
+	/>
 </div>
-
-<style lang="postcss">
-	input[type='number']::-webkit-inner-spin-button,
-	input[type='number']::-webkit-outer-spin-button {
-		@apply appearance-none;
-	}
-</style>
