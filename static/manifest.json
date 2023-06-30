@@ -1,0 +1,11 @@
+{
+  "short_name": "Calculators",
+  "name": "Calculators",
+  "start_url": "/",
+  "icons": [],
+  "background_color": "#CE2273",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#CE2273",
+  "description": "Calculator utils for discount and tips"
+}
