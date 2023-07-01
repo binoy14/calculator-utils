@@ -1,37 +1,45 @@
 <script lang="ts">
   import ButtonInput from '../components/ButtonInput.svelte';
-  import type { HandleCalculationOptions } from '../components/types';
+  import { discountStore, finalPriceStore, taxStore } from '../stores/priceStore';
 
   let price: number | undefined = undefined;
   let discount: number | undefined = undefined;
   let tax: number | undefined = undefined;
-  let finalPrice: string = '0';
+  let finalPrice = 0;
 
   const allowedDiscounts = [10, 15, 20, 25, 30];
   const allowedTaxes = [5, 7, 7.5, 10];
 
-  function calculateDiscount(opts?: HandleCalculationOptions) {
-    const { inputDiscount, inputTax } = opts ?? {};
+  finalPriceStore.subscribe((val) => {
+    finalPrice = val;
+  });
 
-    if (inputDiscount !== undefined) {
-      discount = inputDiscount;
-    }
+  discountStore.subscribe((val) => {
+    discount = val;
+    calculateDiscount();
+  });
 
-    if (inputTax !== undefined) {
-      tax = inputTax;
-    }
+  taxStore.subscribe((val) => {
+    tax = val;
+    calculateDiscount();
+  });
 
+  function calculateDiscount() {
     let totalPrice = price;
 
-    if (typeof totalPrice === 'number' && discount !== undefined) {
+    if (typeof totalPrice !== 'number') {
+      return finalPriceStore.set(0);
+    }
+
+    if (discount !== undefined) {
       totalPrice = totalPrice - (totalPrice * discount) / 100;
     }
 
-    if (typeof totalPrice === 'number' && tax !== undefined) {
+    if (tax !== undefined) {
       totalPrice = totalPrice + (totalPrice * tax) / 100;
     }
 
-    finalPrice = typeof totalPrice === 'number' ? totalPrice.toFixed(2) : '0';
+    finalPriceStore.set(totalPrice ?? 0);
   }
 </script>
 
@@ -42,7 +50,7 @@
       class="flex w-full items-center gap-2 self-end justify-self-end overflow-x-auto overflow-y-hidden text-right text-6xl font-bold text-gray-500"
     >
       <span class="text-3xl font-normal">$</span>
-      <span class="flex-1">{finalPrice}</span>
+      <span class="flex-1">{finalPrice.toFixed(2)}</span>
     </span>
   </div>
 
@@ -53,7 +61,7 @@
       type="number"
       id="price"
       bind:value={price}
-      on:input={() => calculateDiscount()}
+      on:input={calculateDiscount}
       class="w-full appearance-none rounded px-2 py-4 shadow"
       min="0"
     />
@@ -61,17 +69,17 @@
 
   <ButtonInput
     items={allowedDiscounts}
-    type="inputDiscount"
-    originalValue={discount}
-    handleCalculation={calculateDiscount}
+    label="discount"
     title="Discount %"
+    bind:value={discount}
+    on:inputChange={(e) => discountStore.set(e.detail)}
   />
 
   <ButtonInput
     items={allowedTaxes}
-    type="inputTax"
-    originalValue={tax}
-    handleCalculation={calculateDiscount}
+    label="tax"
     title="Tax %"
+    bind:value={tax}
+    on:inputChange={(e) => taxStore.set(e.detail)}
   />
 </div>
