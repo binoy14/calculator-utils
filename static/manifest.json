@@ -49,9 +49,9 @@
       "type": "image/png"
     }
   ],
-  "background_color": "#CE2273",
+  "background_color": "#7E22CE",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#CE2273",
+  "theme_color": "#7E22CE",
   "description": "Calculator utils for discount and tips"
 }
