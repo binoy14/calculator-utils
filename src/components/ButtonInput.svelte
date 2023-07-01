@@ -1,11 +1,20 @@
 <script lang="ts">
-  import type { HandleCalculationOptions } from './types';
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
 
   export let items: number[];
-  export let type: 'inputTax' | 'inputDiscount';
-  export let originalValue: number | undefined;
-  export let handleCalculation: (opts?: HandleCalculationOptions) => void;
+  export let label: string;
+  export let value: number | undefined;
   export let title: string;
+
+  let handleCalculation = (val?: number) => {
+    dispatch('inputChange', val);
+  };
+
+  $: {
+    dispatch('inputChange', value);
+  }
 </script>
 
 <div class="mt-4 w-full shadow">
@@ -13,17 +22,18 @@
   <div class="inline-flex w-full">
     {#each items as item, i}
       <button
-        class="bg-white px-2 py-4 font-bold shadow {i === 0 && 'rounded-bl'} {originalValue === item && 'bg-gray-300'}"
-        on:click={() => handleCalculation({ [type]: item })}>{item}%</button
+        class="bg-white px-2 py-4 font-bold shadow"
+        class:first-item={i === 0}
+        class:active={value === item}
+        on:click={() => handleCalculation(item)}>{item}%</button
       >
     {/each}
     <div>
-      <label for={type} class="sr-only">{title}</label>
+      <label for={label} class="sr-only">{title}</label>
       <input
         type="number"
-        id={type}
-        bind:value={originalValue}
-        on:input={() => handleCalculation()}
+        id={label}
+        bind:value
         placeholder="%"
         class="w-full appearance-none rounded-br px-2 py-4 shadow"
         min="0"
@@ -36,5 +46,13 @@
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {
     @apply appearance-none;
+  }
+
+  .first-item {
+    @apply rounded-bl;
+  }
+
+  .active {
+    @apply bg-gray-300;
   }
 </style>
