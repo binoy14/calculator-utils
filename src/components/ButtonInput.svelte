@@ -30,6 +30,7 @@
         class="bg-white px-2 py-4 font-bold shadow"
         class:first-item={i === 0}
         class:active={value === item}
+        data-testid={`${label}-${item}`}
         on:click={() => handleCalculation(item)}>{item}%</button
       >
     {/each}
