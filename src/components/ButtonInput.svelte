@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
+  import CloseIcon from './CloseIcon.svelte';
 
   const dispatch = createEventDispatcher();
 
@@ -13,7 +14,11 @@
   };
 
   $: {
-    dispatch('inputChange', value);
+    handleCalculation(value);
+  }
+
+  function handleClear() {
+    handleCalculation(undefined);
   }
 </script>
 
@@ -28,16 +33,12 @@
         on:click={() => handleCalculation(item)}>{item}%</button
       >
     {/each}
-    <div>
+    <div class="inline-flex rounded-br shadow">
       <label for={label} class="sr-only">{title}</label>
-      <input
-        type="number"
-        id={label}
-        bind:value
-        placeholder="%"
-        class="w-full appearance-none rounded-br px-2 py-4 shadow"
-        min="0"
-      />
+      <input type="number" id={label} bind:value placeholder="%" class="w-full appearance-none px-2 py-4" min="0" />
+      <button class="bg-white px-2" on:click={handleClear}>
+        <CloseIcon />
+      </button>
     </div>
   </div>
 </div>
@@ -53,6 +54,6 @@
   }
 
   .active {
-    @apply bg-gray-300;
+    @apply bg-gray-200;
   }
 </style>
