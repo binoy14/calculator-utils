@@ -12,7 +12,7 @@
   let priceInput: HTMLInputElement;
 
   const allowedDiscounts = [10, 15, 20, 25, 30];
-  const allowedTaxes = [5, 7, 7.5, 10];
+  const allowedTaxes = [5, 7, 7.25, 10];
 
   discountStore.subscribe((val) => {
     discount = val;
