@@ -17,7 +17,7 @@ exports[`renders the button input 1`] = `
         class="inline-flex w-full"
       >
         <button
-          class="bg-white px-2 py-4 font-bold shadow svelte-1rog5px first-item active"
+          class="border-r bg-white px-2 py-4 font-bold svelte-1kvtb7z first-item active"
           data-testid="button-1"
         >
           1
@@ -25,7 +25,7 @@ exports[`renders the button input 1`] = `
         </button>
          
         <div
-          class="inline-flex rounded-br shadow"
+          class="inline-flex"
         >
           <label
             class="sr-only"
@@ -35,7 +35,7 @@ exports[`renders the button input 1`] = `
           </label>
            
           <input
-            class="w-full appearance-none px-2 py-4 svelte-1rog5px"
+            class="w-full appearance-none px-2 py-4"
             id="button"
             min="0"
             placeholder="%"
@@ -43,7 +43,7 @@ exports[`renders the button input 1`] = `
           />
            
           <button
-            class="bg-white px-2"
+            class="rounded-br bg-white px-2"
           >
             <svg
               class="svelte-h5hn1g"

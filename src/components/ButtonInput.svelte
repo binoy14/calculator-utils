@@ -27,17 +27,17 @@
   <div class="inline-flex w-full">
     {#each items as item, i}
       <button
-        class="bg-white px-2 py-4 font-bold shadow"
+        class="border-r bg-white px-2 py-4 font-bold"
         class:first-item={i === 0}
         class:active={value === item}
         data-testid={`${label}-${item}`}
         on:click={() => handleCalculation(item)}>{item}%</button
       >
     {/each}
-    <div class="inline-flex rounded-br shadow">
+    <div class="inline-flex">
       <label for={label} class="sr-only">{title}</label>
       <input type="number" id={label} bind:value placeholder="%" class="w-full appearance-none px-2 py-4" min="0" />
-      <button class="bg-white px-2" on:click={handleClear}>
+      <button class="rounded-br bg-white px-2" on:click={handleClear}>
         <CloseIcon />
       </button>
     </div>
@@ -45,11 +45,6 @@
 </div>
 
 <style lang="postcss">
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    @apply appearance-none;
-  }
-
   .first-item {
     @apply rounded-bl;
   }
