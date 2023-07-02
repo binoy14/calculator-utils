@@ -1,6 +1,7 @@
 <script lang="ts">
   import { finalPriceStore } from '../stores/priceStore';
-  let finalPrice: number = 0;
+
+  let finalPrice = 0;
 
   finalPriceStore.subscribe((val) => {
     finalPrice = val;
@@ -13,13 +14,13 @@
     class="flex w-full items-center gap-2 self-end justify-self-end overflow-x-auto overflow-y-hidden text-right text-5xl font-bold text-gray-500"
   >
     <span class="text-3xl font-normal">$</span>
-    <span class="flex-1"
-      >{finalPrice
+    <span class="flex-1">
+      {finalPrice
         .toLocaleString('en-US', {
           style: 'currency',
           currency: 'USD',
         })
-        .replace('$', '')}</span
-    >
+        .replace('$', '')}
+    </span>
   </span>
 </div>
