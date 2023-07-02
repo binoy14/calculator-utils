@@ -104,10 +104,3 @@
     class="mt-4 w-full rounded border border-red-400 bg-white px-4 py-2 font-bold text-red-600 shadow">Reset</button
   >
 </div>
-
-<style global lang="postcss">
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    @apply appearance-none;
-  }
-</style>
