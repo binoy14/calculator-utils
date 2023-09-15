@@ -2,6 +2,5 @@
   "singleQuote": true,
   "printWidth": 120,
   "plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
-  "pluginSearchDirs": false,
   "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
 }
