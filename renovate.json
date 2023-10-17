@@ -8,5 +8,6 @@
     "🤖 bot",
     "📦 dependencies"
   ],
-  "rangeStrategy": "pin"
+  "rangeStrategy": "pin",
+  "prConcurrentLimit": 5
 }
