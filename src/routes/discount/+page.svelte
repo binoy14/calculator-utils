@@ -1,24 +1,20 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import ButtonInput from '../components/ButtonInput.svelte';
-  import CloseIcon from '../components/CloseIcon.svelte';
-  import PriceDisplay from '../components/PriceDisplay.svelte';
+  import ButtonInput from '../../components/ButtonInput.svelte';
+  import CloseIcon from '../../components/CloseIcon.svelte';
+  import PriceDisplay from '../../components/PriceDisplay.svelte';
+
+  let price: number | undefined = undefined;
+  let discount: number | undefined = undefined;
+  let tax: number | undefined = undefined;
+  let finalPrice: number | undefined = 0;
 
   let priceInput: HTMLInputElement;
 
-  let price: number | undefined = undefined;
-  let tip: number | undefined = undefined;
-  let tipAmount: number | undefined = 0;
-  let finalPrice: number | undefined = 0;
+  const allowedDiscounts = [10, 15, 20, 25, 30];
+  const allowedTaxes = [5, 7, 7.25, 10];
 
-  let allowedTips = [15, 20, 25, 30];
-
-  function handleClear() {
-    price = undefined;
-    finalPrice = 0;
-  }
-
-  function calculateTip() {
+  function calculateDiscount() {
     let totalPrice = price;
 
     if (typeof totalPrice !== 'number') {
@@ -26,9 +22,12 @@
       return;
     }
 
-    if (tip !== undefined) {
-      tipAmount = (totalPrice * tip) / 100;
-      totalPrice = totalPrice + tipAmount;
+    if (discount !== undefined) {
+      totalPrice = totalPrice - (totalPrice * discount) / 100;
+    }
+
+    if (tax !== undefined) {
+      totalPrice = totalPrice + (totalPrice * tax) / 100;
     }
 
     finalPrice = totalPrice ?? 0;
@@ -36,11 +35,16 @@
 
   function handleReset() {
     price = undefined;
-    tip = undefined;
-    tipAmount = 0;
+    discount = undefined;
+    tax = undefined;
     finalPrice = 0;
 
     priceInput.focus();
+  }
+
+  function handleClear() {
+    price = undefined;
+    finalPrice = 0;
   }
 
   onMount(() => {
@@ -49,7 +53,7 @@
 </script>
 
 <div class="container m-auto flex h-screen flex-col items-center p-4 md:w-96">
-  <h1 class="mb-4 text-xl font-bold text-white">Tip Calculator</h1>
+  <h1 class="mb-4 text-xl font-bold text-white">Discount Calculator</h1>
 
   <div class="inline-flex w-full">
     <label for="price" class="sr-only">Price:</label>
@@ -59,7 +63,7 @@
       id="price"
       bind:this={priceInput}
       bind:value={price}
-      on:input={calculateTip}
+      on:input={calculateDiscount}
       class="w-full appearance-none rounded-l px-2 py-4 shadow"
       min="0"
     />
@@ -69,17 +73,26 @@
   </div>
 
   <ButtonInput
-    items={allowedTips}
-    label="tip"
-    title="Tip %"
-    bind:value={tip}
+    items={allowedDiscounts}
+    label="discount"
+    title="Discount %"
+    bind:value={discount}
     on:inputChange={(e) => {
-      tip = e.detail;
-      calculateTip();
+      discount = e.detail;
+      calculateDiscount();
     }}
   />
 
-  <PriceDisplay finalPrice={tipAmount} title="Tip Amount" />
+  <ButtonInput
+    items={allowedTaxes}
+    label="tax"
+    title="Tax %"
+    bind:value={tax}
+    on:inputChange={(e) => {
+      tax = e.detail;
+      calculateDiscount();
+    }}
+  />
 
   <PriceDisplay {finalPrice} />
 
