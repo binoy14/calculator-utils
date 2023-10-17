@@ -11,7 +11,7 @@ dependencies:
 
 devDependencies:
   '@iconify/json':
-    specifier: ^2.2.129
+    specifier: 2.2.129
     version: 2.2.129
   '@sveltejs/adapter-auto':
     specifier: 2.1.0
@@ -77,7 +77,7 @@ devDependencies:
     specifier: 5.2.2
     version: 5.2.2
   unplugin-icons:
-    specifier: ^0.17.0
+    specifier: 0.17.0
     version: 0.17.0
   vite:
     specifier: 4.4.11
