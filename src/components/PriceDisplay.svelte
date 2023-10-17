@@ -1,15 +1,10 @@
 <script lang="ts">
-  import { finalPriceStore } from '../stores/priceStore';
-
-  let finalPrice = 0;
-
-  finalPriceStore.subscribe((val) => {
-    finalPrice = val;
-  });
+  export let finalPrice: number = 0;
+  export let title = 'Final Price';
 </script>
 
 <div class="relative mt-4 grid h-40 min-h-[10rem] w-full overflow-hidden rounded bg-white p-2 shadow-md">
-  <span class="absolute right-2 top-2 text-amber-700">Final Price</span>
+  <span class="absolute right-2 top-2 text-amber-700">{title}</span>
   <span
     class="flex w-full items-center gap-2 self-end justify-self-end overflow-x-auto overflow-y-hidden text-right text-5xl font-bold text-gray-500"
   >

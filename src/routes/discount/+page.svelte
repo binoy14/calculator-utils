@@ -1,13 +1,14 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import ButtonInput from '../../components/ButtonInput.svelte';
-  import { discountStore, finalPriceStore, taxStore } from '../../stores/priceStore';
+  import { discountStore, taxStore } from '../../stores/discountStore';
   import CloseIcon from '../../components/CloseIcon.svelte';
   import PriceDisplay from '../../components/PriceDisplay.svelte';
 
   let price: number | undefined = undefined;
   let discount: number | undefined = undefined;
   let tax: number | undefined = undefined;
+  let finalPrice: number | undefined = undefined;
 
   let priceInput: HTMLInputElement;
 
@@ -28,7 +29,7 @@
     let totalPrice = price;
 
     if (typeof totalPrice !== 'number') {
-      return finalPriceStore.set(0);
+      return (finalPrice = 0);
     }
 
     if (discount !== undefined) {
@@ -39,21 +40,21 @@
       totalPrice = totalPrice + (totalPrice * tax) / 100;
     }
 
-    finalPriceStore.set(totalPrice ?? 0);
+    finalPrice = totalPrice ?? 0;
   }
 
   function handleReset() {
     price = undefined;
     discount = undefined;
     tax = undefined;
-    finalPriceStore.set(0);
+    finalPrice = 0;
 
     priceInput.focus();
   }
 
   function handleClear() {
     price = undefined;
-    finalPriceStore.set(0);
+    finalPrice = 0;
   }
 
   onMount(() => {
@@ -97,7 +98,7 @@
     on:inputChange={(e) => taxStore.set(e.detail)}
   />
 
-  <PriceDisplay />
+  <PriceDisplay {finalPrice} />
 
   <button
     on:click={handleReset}
