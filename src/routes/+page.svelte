@@ -11,7 +11,7 @@
   let tipAmount: number | undefined = 0;
   let finalPrice: number | undefined = 0;
 
-  let allowedTips = [15, 20, 25];
+  let allowedTips = [15, 20, 25, 30];
 
   function handleClear() {
     price = undefined;

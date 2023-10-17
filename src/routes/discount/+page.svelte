@@ -1,35 +1,25 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import ButtonInput from '../../components/ButtonInput.svelte';
-  import { discountStore, taxStore } from '../../stores/discountStore';
   import CloseIcon from '../../components/CloseIcon.svelte';
   import PriceDisplay from '../../components/PriceDisplay.svelte';
 
   let price: number | undefined = undefined;
   let discount: number | undefined = undefined;
   let tax: number | undefined = undefined;
-  let finalPrice: number | undefined = undefined;
+  let finalPrice: number | undefined = 0;
 
   let priceInput: HTMLInputElement;
 
   const allowedDiscounts = [10, 15, 20, 25, 30];
   const allowedTaxes = [5, 7, 7.25, 10];
 
-  discountStore.subscribe((val) => {
-    discount = val;
-    calculateDiscount();
-  });
-
-  taxStore.subscribe((val) => {
-    tax = val;
-    calculateDiscount();
-  });
-
   function calculateDiscount() {
     let totalPrice = price;
 
     if (typeof totalPrice !== 'number') {
-      return (finalPrice = 0);
+      finalPrice = 0;
+      return;
     }
 
     if (discount !== undefined) {
@@ -87,7 +77,10 @@
     label="discount"
     title="Discount %"
     bind:value={discount}
-    on:inputChange={(e) => discountStore.set(e.detail)}
+    on:inputChange={(e) => {
+      discount = e.detail;
+      calculateDiscount();
+    }}
   />
 
   <ButtonInput
@@ -95,7 +88,10 @@
     label="tax"
     title="Tax %"
     bind:value={tax}
-    on:inputChange={(e) => taxStore.set(e.detail)}
+    on:inputChange={(e) => {
+      tax = e.detail;
+      calculateDiscount();
+    }}
   />
 
   <PriceDisplay {finalPrice} />
