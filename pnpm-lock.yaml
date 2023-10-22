@@ -11,8 +11,8 @@ dependencies:
 
 devDependencies:
   '@iconify/json':
-    specifier: 2.2.129
-    version: 2.2.129
+    specifier: 2.2.131
+    version: 2.2.131
   '@sveltejs/adapter-auto':
     specifier: 2.1.0
     version: 2.1.0(@sveltejs/kit@1.26.0)
@@ -409,8 +409,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify/json@2.2.129:
-    resolution: {integrity: sha512-gzyHA8zeBtZwFdHaVJnd53oZc1/G4HNAAvKSe4Ydp+9BI2kpcLtHqN9CI3AtHEy/bMfkY9LM9wioMD0dGivgWg==}
+  /@iconify/json@2.2.131:
+    resolution: {integrity: sha512-KpGOd7EkL+TvCsvlKln0HBvwl/KQyo2jZyLwUaU5mbGCPnIToO8Stxjl4QgYwg3SI1q3Pba0AAqmPxs1nD+g9w==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.1

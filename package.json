@@ -14,7 +14,7 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@iconify/json": "2.2.129",
+    "@iconify/json": "2.2.131",
     "@sveltejs/adapter-auto": "2.1.0",
     "@sveltejs/kit": "1.26.0",
     "@sveltejs/vite-plugin-svelte": "2.4.6",
