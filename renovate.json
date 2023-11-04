@@ -1,12 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:base"],
   "rebaseWhen": "behind-base-branch",
-  "labels": [
-    "🤖 bot",
-    "📦 dependencies"
+  "packageRules": [
+    { "labels": ["📦 deps", "🤖 bot"], "matchPackagePatterns": ["*"] },
+    {
+      "labels": ["⚠️ major", "📦 deps", "🤖 bot"],
+      "matchUpdateTypes": ["major"]
+    }
   ],
   "rangeStrategy": "pin",
   "prConcurrentLimit": 5
