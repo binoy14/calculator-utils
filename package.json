@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@iconify/json": "2.2.137",
-    "@sveltejs/adapter-auto": "2.1.0",
+    "@sveltejs/adapter-auto": "2.1.1",
     "@sveltejs/kit": "1.27.3",
     "@sveltejs/vite-plugin-svelte": "2.4.6",
     "@testing-library/dom": "9.3.3",
