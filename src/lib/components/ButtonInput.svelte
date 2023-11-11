@@ -8,6 +8,9 @@
   export let label: string;
   export let value: number | undefined;
   export let title: string;
+  export let placeholder: string = '';
+  // TODO remove default percent formatter
+  export let formatter = handlePercentFormatter;
 
   let handleCalculation = (val?: number) => {
     dispatch('inputChange', val);
@@ -20,6 +23,10 @@
   function handleClear() {
     handleCalculation(undefined);
   }
+
+  function handlePercentFormatter(value: number) {
+    return `${value}%`;
+  }
 </script>
 
 <div class="mt-4 w-full shadow">
@@ -31,12 +38,19 @@
         class:first-item={i === 0}
         class:active={value === item}
         data-testid={`${label}-${item}`}
-        on:click={() => handleCalculation(item)}>{item}%</button
+        on:click={() => handleCalculation(item)}>{formatter(item)}</button
       >
     {/each}
     <div class="inline-flex">
       <label for={label} class="sr-only">{title}</label>
-      <input type="number" id={label} bind:value placeholder="%" class="w-full appearance-none px-2 py-4" min="0" />
+      <input
+        type="number"
+        id={label}
+        bind:value
+        {placeholder}
+        class="w-full appearance-none px-2 py-4"
+        min="0"
+      />
       <button class="rounded-br bg-white px-2" on:click={handleClear}>
         <CloseIcon />
       </button>
