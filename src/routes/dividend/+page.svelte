@@ -49,6 +49,7 @@
   function handleReset() {
     investmentAmount = undefined;
     years = undefined;
+    apy = undefined;
     dividendReturn = 0;
     totalReturn = 0;
 
