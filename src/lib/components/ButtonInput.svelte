@@ -9,8 +9,7 @@
   export let value: number | undefined;
   export let title: string;
   export let placeholder: string = '';
-  // TODO remove default percent formatter
-  export let formatter = handlePercentFormatter;
+  export let formatter: (value: number) => string;
 
   let handleCalculation = (val?: number) => {
     dispatch('inputChange', val);
@@ -22,10 +21,6 @@
 
   function handleClear() {
     handleCalculation(undefined);
-  }
-
-  function handlePercentFormatter(value: number) {
-    return `${value}%`;
   }
 </script>
 
