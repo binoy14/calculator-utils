@@ -1,9 +1,13 @@
 <script lang="ts">
   import '../app.css';
   import '@fontsource/roboto';
+  import { inject } from '@vercel/analytics'
   import HandMoney from 'virtual:icons/solar/hand-money-linear';
   import Discount from 'virtual:icons/ic/outline-discount';
   import { page } from '$app/stores';
+  import { dev } from '$app/environment';
+
+  inject({ mode: dev ? 'development' : 'production' })
 
   const pages = [
     {

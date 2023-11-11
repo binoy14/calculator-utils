@@ -42,6 +42,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@fontsource/roboto": "5.0.8"
+    "@fontsource/roboto": "5.0.8",
+    "@vercel/analytics": "1.1.1"
   }
 }
