@@ -8,6 +8,8 @@
   export let label: string;
   export let value: number | undefined;
   export let title: string;
+  export let placeholder: string = '';
+  export let formatter: (value: number) => string;
 
   let handleCalculation = (val?: number) => {
     dispatch('inputChange', val);
@@ -31,12 +33,19 @@
         class:first-item={i === 0}
         class:active={value === item}
         data-testid={`${label}-${item}`}
-        on:click={() => handleCalculation(item)}>{item}%</button
+        on:click={() => handleCalculation(item)}>{formatter(item)}</button
       >
     {/each}
     <div class="inline-flex">
       <label for={label} class="sr-only">{title}</label>
-      <input type="number" id={label} bind:value placeholder="%" class="w-full appearance-none px-2 py-4" min="0" />
+      <input
+        type="number"
+        id={label}
+        bind:value
+        {placeholder}
+        class="w-full appearance-none px-2 py-4"
+        min="0"
+      />
       <button class="rounded-br bg-white px-2" on:click={handleClear}>
         <CloseIcon />
       </button>

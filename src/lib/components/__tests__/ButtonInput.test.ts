@@ -9,6 +9,8 @@ test('renders the button input', () => {
       label: 'button',
       title: 'Button',
       value: 1,
+      placeholder: '%',
+      formatter: (value: number) => `${value}`,
     },
   });
 
