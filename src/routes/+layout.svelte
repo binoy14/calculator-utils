@@ -41,12 +41,17 @@
     {#each pages as page}
       <a
         href={page.path}
-        class="group inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 {page.path === path
+        class="group inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 {page.path ===
+        path
           ? 'text-blue-600'
           : 'text-gray-500'}"
       >
         <svelte:component this={page.icon} />
-        <span class="text-sm {page.path === path ? 'text-blue-600' : 'text-gray-500'} group-hover:text-blue-600">
+        <span
+          class="text-sm {page.path === path
+            ? 'text-blue-600'
+            : 'text-gray-500'} group-hover:text-blue-600"
+        >
           {page.label}
         </span>
       </a>
