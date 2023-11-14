@@ -14,14 +14,14 @@ dependencies:
 
 devDependencies:
   '@iconify/json':
-    specifier: 2.2.141
-    version: 2.2.141
+    specifier: 2.2.142
+    version: 2.2.142
   '@sveltejs/adapter-auto':
     specifier: 2.1.1
-    version: 2.1.1(@sveltejs/kit@1.27.5)
+    version: 2.1.1(@sveltejs/kit@1.27.6)
   '@sveltejs/kit':
-    specifier: 1.27.5
-    version: 1.27.5(svelte@4.2.3)(vite@4.5.0)
+    specifier: 1.27.6
+    version: 1.27.6(svelte@4.2.3)(vite@4.5.0)
   '@sveltejs/vite-plugin-svelte':
     specifier: 2.5.2
     version: 2.5.2(svelte@4.2.3)(vite@4.5.0)
@@ -412,8 +412,8 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
-  /@iconify/json@2.2.141:
-    resolution: {integrity: sha512-EmHsjVngGE7K9ykKkkGczXTW5552h/dDp7SicHT3SaQD1Krb/GvIVCff9jRgBDFu9QxhcqVdVk+kDHfbzJXT8Q==}
+  /@iconify/json@2.2.142:
+    resolution: {integrity: sha512-EfQv1GMGxOySdwaGR3+Diqudkwk4W299cNtcQhg7QAlH9x6FW9851raiYvdOsMZp0ya+Ye+evTTqxyZ4vEh5cw==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.1
@@ -506,17 +506,17 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@sveltejs/adapter-auto@2.1.1(@sveltejs/kit@1.27.5):
+  /@sveltejs/adapter-auto@2.1.1(@sveltejs/kit@1.27.6):
     resolution: {integrity: sha512-nzi6x/7/3Axh5VKQ8Eed3pYxastxoa06Y/bFhWb7h3Nu+nGRVxKAy3+hBJgmPCwWScy8n0TsstZjSVKfyrIHkg==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
     dependencies:
-      '@sveltejs/kit': 1.27.5(svelte@4.2.3)(vite@4.5.0)
+      '@sveltejs/kit': 1.27.6(svelte@4.2.3)(vite@4.5.0)
       import-meta-resolve: 4.0.0
     dev: true
 
-  /@sveltejs/kit@1.27.5(svelte@4.2.3)(vite@4.5.0):
-    resolution: {integrity: sha512-+L1WPs/ZYNjXoBFoFARypD4aZOjkT51vFpRCtQI45+Fmmfi4Y0dH/8VFlmYD6VlGe89ViIPg7lgf/JpGQ2tr7A==}
+  /@sveltejs/kit@1.27.6(svelte@4.2.3)(vite@4.5.0):
+    resolution: {integrity: sha512-GsjTkMbKzXdbeRg0tk8S7HNShQ4879ftRr0ZHaZfjbig1xQwG57Bvcm9U9/mpLJtCapLbLWUnygKrgcLISLC8A==}
     engines: {node: ^16.14 || >=18}
     hasBin: true
     requiresBuild: true
