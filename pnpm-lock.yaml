@@ -26,8 +26,8 @@ devDependencies:
     specifier: 3.0.2
     version: 3.0.2(svelte@4.2.12)(vite@5.1.4)
   '@testing-library/dom':
-    specifier: 9.3.4
-    version: 9.3.4
+    specifier: 10.0.0
+    version: 10.0.0
   '@testing-library/svelte':
     specifier: 4.1.0
     version: 4.1.0(svelte@4.2.12)
@@ -682,6 +682,20 @@ packages:
       vitefu: 0.2.5(vite@5.1.4)
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@testing-library/dom@10.0.0:
+    resolution: {integrity: sha512-PmJPnogldqoVFf+EwbHvbBJ98MmqASV8kLrBYgsDNxQcFMeIS7JFL48sfyXvuMtgmWO/wMhh25odr+8VhDmn4g==}
+    engines: {node: '>=18'}
+    dependencies:
+      '@babel/code-frame': 7.22.5
+      '@babel/runtime': 7.22.5
+      '@types/aria-query': 5.0.1
+      aria-query: 5.3.0
+      chalk: 4.1.2
+      dom-accessibility-api: 0.5.16
+      lz-string: 1.5.0
+      pretty-format: 27.5.1
     dev: true
 
   /@testing-library/dom@9.3.4:
