@@ -1,6 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
+  "schedule": [
+    "before 4am"
+  ],
   "rebaseWhen": "conflicted",
   "packageRules": [
     { "labels": ["📦 deps", "🤖 bot"], "matchPackagePatterns": ["*"] },

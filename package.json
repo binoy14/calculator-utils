@@ -44,5 +44,9 @@
   "dependencies": {
     "@fontsource/roboto": "5.0.8",
     "@vercel/analytics": "1.2.2"
+  },
+  "packageManager": "pnpm@8.15.7",
+  "engines": {
+    "pnpm": ">=8"
   }
 }
