@@ -26,11 +26,11 @@ devDependencies:
     specifier: 3.1.0
     version: 3.1.0(svelte@4.2.15)(vite@5.2.10)
   '@testing-library/dom':
-    specifier: 9.3.4
-    version: 9.3.4
+    specifier: 10.0.0
+    version: 10.0.0
   '@testing-library/svelte':
-    specifier: 4.2.3
-    version: 4.2.3(svelte@4.2.15)
+    specifier: 5.0.1
+    version: 5.0.1(svelte@4.2.15)
   '@typescript-eslint/eslint-plugin':
     specifier: 7.7.0
     version: 7.7.0(@typescript-eslint/parser@7.7.0)(eslint@8.57.0)(typescript@5.4.5)
@@ -722,6 +722,20 @@ packages:
       - supports-color
     dev: true
 
+  /@testing-library/dom@10.0.0:
+    resolution: {integrity: sha512-PmJPnogldqoVFf+EwbHvbBJ98MmqASV8kLrBYgsDNxQcFMeIS7JFL48sfyXvuMtgmWO/wMhh25odr+8VhDmn4g==}
+    engines: {node: '>=18'}
+    dependencies:
+      '@babel/code-frame': 7.22.5
+      '@babel/runtime': 7.22.5
+      '@types/aria-query': 5.0.1
+      aria-query: 5.3.0
+      chalk: 4.1.2
+      dom-accessibility-api: 0.5.16
+      lz-string: 1.5.0
+      pretty-format: 27.5.1
+    dev: true
+
   /@testing-library/dom@9.3.4:
     resolution: {integrity: sha512-FlS4ZWlp97iiNWig0Muq8p+3rVDjRiYE+YKGbAqXOu9nwJFFOdL00kFpz42M+4huzYi86vAK1sOOfyOG45muIQ==}
     engines: {node: '>=14'}
@@ -736,8 +750,8 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/svelte@4.2.3(svelte@4.2.15):
-    resolution: {integrity: sha512-8vM2+JSPc6wZWkO9ICPmHvzacjy8jBw+iVjmNs+0VsPV3AO3v4P8qCLWTaQ9nYW/e+IR1BCy3MM3Uqg21dlBkw==}
+  /@testing-library/svelte@5.0.1(svelte@4.2.15):
+    resolution: {integrity: sha512-UP/n37BVDMLp9Ntlr7sYQ2jwOeFZR8bquesk9sCSjBGv/YmxuKrUuP+98KNGvEkW2uAep8rFKHgs9nRUJ40yXw==}
     engines: {node: '>= 10'}
     peerDependencies:
       svelte: ^3 || ^4 || ^5
