@@ -14,7 +14,7 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@iconify/json": "2.2.207",
+    "@iconify/json": "2.2.208",
     "@sveltejs/adapter-auto": "3.2.0",
     "@sveltejs/kit": "2.5.7",
     "@sveltejs/vite-plugin-svelte": "3.1.0",
@@ -25,8 +25,8 @@
     "autoprefixer": "10.4.19",
     "eslint": "9.2.0",
     "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-svelte": "2.38.0",
-    "globals": "15.1.0",
+    "eslint-plugin-svelte": "2.39.0",
+    "globals": "15.2.0",
     "jsdom": "24.0.0",
     "postcss": "8.4.38",
     "prettier": "3.2.5",
