@@ -5,6 +5,7 @@
     "before 4am"
   ],
   "rebaseWhen": "conflicted",
+  "postUpdateOptions": ["pnpmDedupe"],
   "packageRules": [
     { "labels": ["📦 deps", "🤖 bot"], "matchPackagePatterns": ["*"] },
     {
@@ -16,6 +17,13 @@
       "groupSlug": "all-minor-patch",
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "description": "Don't bump engines field in package.json",
+      "matchPackageNames": ["node", "pnpm"],
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["engines"],
+      "rangeStrategy": "auto"
     }
   ],
   "rangeStrategy": "pin",
