@@ -16,7 +16,7 @@ exports[`renders the button input 1`] = `
       class="inline-flex w-full"
     >
       <button
-        class="border-r bg-white px-2 py-4 font-bold svelte-1kvtb7z first-item active"
+        class="border-r bg-white px-2 py-4 font-bold svelte-xe4hn8 first-item active"
         data-testid="button-1"
       >
         1
