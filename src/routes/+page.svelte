@@ -5,7 +5,7 @@
   import Input from '$lib/components/Input.svelte';
   import { percentFormatter } from '$lib/utils';
 
-  let priceInput: HTMLInputElement;
+  let priceInput: HTMLInputElement | undefined;
 
   let price: number | undefined = undefined;
   let tip: number | undefined = undefined;
@@ -41,11 +41,11 @@
     tipAmount = 0;
     finalPrice = 0;
 
-    priceInput.focus();
+    priceInput?.focus();
   }
 
   onMount(() => {
-    priceInput.focus();
+    priceInput?.focus();
   });
 </script>
 

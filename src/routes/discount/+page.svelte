@@ -10,7 +10,7 @@
   let tax: number | undefined = undefined;
   let finalPrice: number | undefined = 0;
 
-  let priceInput: HTMLInputElement;
+  let priceInput: HTMLInputElement | undefined;
 
   const allowedDiscounts = [10, 15, 20, 25, 30];
   const allowedTaxes = [5, 7, 7.25, 10];
@@ -40,7 +40,7 @@
     tax = undefined;
     finalPrice = 0;
 
-    priceInput.focus();
+    priceInput?.focus();
   }
 
   function handleClear() {
@@ -49,7 +49,7 @@
   }
 
   onMount(() => {
-    priceInput.focus();
+    priceInput?.focus();
   });
 </script>
 
