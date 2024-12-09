@@ -5,7 +5,7 @@
   import Input from '$lib/components/Input.svelte';
   import { calculateInvestmentReturn, calendarFormatter } from '$lib/utils';
 
-  let investmentAmountEl: HTMLInputElement;
+  let investmentAmountEl: HTMLInputElement | undefined;
 
   let investmentAmount: number | undefined = undefined;
   let apy: number | undefined = undefined;
@@ -53,11 +53,11 @@
     dividendReturn = 0;
     totalReturn = 0;
 
-    investmentAmountEl.focus();
+    investmentAmountEl?.focus();
   }
 
   onMount(() => {
-    investmentAmountEl.focus();
+    investmentAmountEl?.focus();
   });
 </script>
 
