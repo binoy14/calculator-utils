@@ -7,10 +7,10 @@
 
   let priceInput: HTMLInputElement | undefined;
 
-  let price: number | undefined = undefined;
-  let tip: number | undefined = undefined;
-  let tipAmount: number | undefined = 0;
-  let finalPrice: number | undefined = 0;
+  let price: number | undefined = $state(undefined);
+  let tip: number | undefined = $state(undefined);
+  let tipAmount: number | undefined = $state(0);
+  let finalPrice: number | undefined = $state(0);
 
   let allowedTips = [15, 20, 25, 30];
 
@@ -54,9 +54,9 @@
 <Input
   name="price"
   label="Price"
-  on:input={calculateTip}
+  oninput={calculateTip}
   bind:value={price}
-  on:click={handleClear}
+  onclick={handleClear}
   input={priceInput}
 />
 
@@ -67,8 +67,8 @@
   placeholder="%"
   bind:value={tip}
   formatter={percentFormatter}
-  on:inputChange={(e) => {
-    tip = e.detail;
+  inputChange={(e) => {
+    tip = e;
     calculateTip();
   }}
 />
@@ -78,7 +78,7 @@
 <PriceDisplay {finalPrice} />
 
 <button
-  on:click={handleReset}
+  onclick={handleReset}
   class="mt-4 w-full rounded border border-red-400 bg-white px-4 py-2 font-bold text-red-600 shadow"
 >
   Reset

@@ -7,6 +7,11 @@
   import MoneyInsert from 'virtual:icons/uil/money-insert';
   import { page } from '$app/stores';
   import { dev } from '$app/environment';
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
 
   inject({ mode: dev ? 'development' : 'production' });
 
@@ -28,12 +33,12 @@
     },
   ];
 
-  $: path = $page.url.pathname;
+  let path = $derived($page.url.pathname);
 </script>
 
 <main class="min-h-screen min-w-full">
   <div class="container m-auto flex h-screen flex-col items-center p-4 md:w-96">
-    <slot />
+    {@render children?.()}
   </div>
 </main>
 <div class="fixed bottom-0 left-0 z-50 h-16 w-full border-t border-gray-200 bg-white">
@@ -46,7 +51,7 @@
           ? 'text-blue-600'
           : 'text-gray-500'}"
       >
-        <svelte:component this={page.icon} />
+        <page.icon />
         <span
           class="text-sm {page.path === path
             ? 'text-blue-600'

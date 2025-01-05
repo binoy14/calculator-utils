@@ -1,9 +1,10 @@
-import { render } from '@testing-library/svelte';
+import { render } from '@testing-library/svelte/svelte5';
 
 import ButtonInput from '../ButtonInput.svelte';
 
 test('renders the button input', () => {
-  const component = render(ButtonInput, {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const component = render(ButtonInput as any, {
     props: {
       items: [1],
       label: 'button',
@@ -11,6 +12,7 @@ test('renders the button input', () => {
       value: 1,
       placeholder: '%',
       formatter: (value: number) => `${value}`,
+      inputChange: () => {},
     },
   });
 
