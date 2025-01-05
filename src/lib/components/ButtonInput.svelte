@@ -1,23 +1,33 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import CloseIcon from './CloseIcon.svelte';
 
-  const dispatch = createEventDispatcher();
+  interface Props {
+    items: number[];
+    label: string;
+    value: number | undefined;
+    title: string;
+    placeholder?: string;
+    formatter: (value: number) => string;
+    inputChange: (value: number | undefined) => void;
+  }
 
-  export let items: number[];
-  export let label: string;
-  export let value: number | undefined;
-  export let title: string;
-  export let placeholder: string = '';
-  export let formatter: (value: number) => string;
+  let {
+    items,
+    label,
+    value = $bindable(),
+    title,
+    placeholder = '',
+    formatter,
+    inputChange,
+  }: Props = $props();
 
   let handleCalculation = (val?: number) => {
-    dispatch('inputChange', val);
+    inputChange(val);
   };
 
-  $: {
+  $effect(() => {
     handleCalculation(value);
-  }
+  });
 
   function handleClear() {
     handleCalculation(undefined);
@@ -33,7 +43,7 @@
         class:first-item={i === 0}
         class:active={value === item}
         data-testid={`${label}-${item}`}
-        on:click={() => handleCalculation(item)}>{formatter(item)}</button
+        onclick={() => handleCalculation(item)}>{formatter(item)}</button
       >
     {/each}
     <div class="inline-flex">
@@ -46,7 +56,7 @@
         class="w-full appearance-none px-2 py-4"
         min="0"
       />
-      <button class="rounded-br bg-white px-2" on:click={handleClear}>
+      <button class="rounded-br bg-white px-2" onclick={handleClear}>
         <CloseIcon />
       </button>
     </div>

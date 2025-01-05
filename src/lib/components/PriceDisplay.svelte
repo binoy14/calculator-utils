@@ -1,6 +1,10 @@
 <script lang="ts">
-  export let finalPrice: number = 0;
-  export let title = 'Final Price';
+  interface Props {
+    finalPrice?: number;
+    title?: string;
+  }
+
+  let { finalPrice = 0, title = 'Final Price' }: Props = $props();
 </script>
 
 <div

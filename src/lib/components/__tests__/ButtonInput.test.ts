@@ -1,4 +1,4 @@
-import { render } from '@testing-library/svelte';
+import { render } from '@testing-library/svelte/svelte5';
 
 import ButtonInput from '../ButtonInput.svelte';
 
@@ -11,6 +11,7 @@ test('renders the button input', () => {
       value: 1,
       placeholder: '%',
       formatter: (value: number) => `${value}`,
+      inputChange: () => {},
     },
   });
 

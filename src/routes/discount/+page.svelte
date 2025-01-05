@@ -5,10 +5,10 @@
   import Input from '$lib/components/Input.svelte';
   import { percentFormatter } from '$lib';
 
-  let price: number | undefined = undefined;
-  let discount: number | undefined = undefined;
-  let tax: number | undefined = undefined;
-  let finalPrice: number | undefined = 0;
+  let price: number | undefined = $state(undefined);
+  let discount: number | undefined = $state(undefined);
+  let tax: number | undefined = $state(undefined);
+  let finalPrice: number | undefined = $state(0);
 
   let priceInput: HTMLInputElement | undefined;
 
@@ -58,9 +58,9 @@
 <Input
   name="price"
   label="Price"
-  on:input={calculateDiscount}
+  oninput={calculateDiscount}
   bind:value={price}
-  on:click={handleClear}
+  onclick={handleClear}
   input={priceInput}
 />
 
@@ -71,8 +71,8 @@
   placeholder="%"
   bind:value={discount}
   formatter={percentFormatter}
-  on:inputChange={(e) => {
-    discount = e.detail;
+  inputChange={(e) => {
+    discount = e;
     calculateDiscount();
   }}
 />
@@ -84,8 +84,8 @@
   placeholder="%"
   bind:value={tax}
   formatter={percentFormatter}
-  on:inputChange={(e) => {
-    tax = e.detail;
+  inputChange={(e) => {
+    tax = e;
     calculateDiscount();
   }}
 />
@@ -93,7 +93,7 @@
 <PriceDisplay {finalPrice} />
 
 <button
-  on:click={handleReset}
+  onclick={handleReset}
   class="mt-4 w-full rounded border border-red-400 bg-white px-4 py-2 font-bold text-red-600 shadow"
 >
   Reset
